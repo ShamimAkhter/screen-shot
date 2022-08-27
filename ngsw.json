@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1661623221920,
+  "timestamp": 1661623563108,
   "index": "C:/Program Files/Git/screen-shot/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "C:/Program Files/Git/screen-shot/favicon.ico",
         "C:/Program Files/Git/screen-shot/index.html",
-        "C:/Program Files/Git/screen-shot/main.8aeaf4b488827e79.js",
+        "C:/Program Files/Git/screen-shot/main.ac443f9e1c40bd23.js",
         "C:/Program Files/Git/screen-shot/manifest.webmanifest",
         "C:/Program Files/Git/screen-shot/polyfills.770a845a965a3d2e.js",
         "C:/Program Files/Git/screen-shot/runtime.7468822c124aac79.js",
@@ -52,8 +52,8 @@
     "C:/Program Files/Git/screen-shot/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "C:/Program Files/Git/screen-shot/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "C:/Program Files/Git/screen-shot/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "C:/Program Files/Git/screen-shot/index.html": "51e0db384252bf558ed6fb4be72393da84cbe265",
-    "C:/Program Files/Git/screen-shot/main.8aeaf4b488827e79.js": "bf13aa1105a0ba2baaeb05ec36726b05331b25a5",
+    "C:/Program Files/Git/screen-shot/index.html": "6e6eeaab67daecc78083e5af6a39d8d9c316e5ee",
+    "C:/Program Files/Git/screen-shot/main.ac443f9e1c40bd23.js": "11c9130f859c0abcfd39dc017887b96ae5ac5976",
     "C:/Program Files/Git/screen-shot/manifest.webmanifest": "19c563fb386ed9c28d855d2c6ec6b263836db15a",
     "C:/Program Files/Git/screen-shot/polyfills.770a845a965a3d2e.js": "2e55a948a4dfc70d3d19d9ab41e4577b9c04ed6d",
     "C:/Program Files/Git/screen-shot/runtime.7468822c124aac79.js": "714c99f360ad223eec5644ee452932b9f58b4c09",
