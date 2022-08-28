@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CameraComponent } from './camera/camera.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     WebcamModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
