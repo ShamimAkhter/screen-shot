@@ -1,41 +1,37 @@
-<div style="text-align: center">
-  <h1>Camera snapshot demo</h1>
+<h2>Camera snapshot demo</h2>
+<!-- <button (click)="toggleWebcam()">Toggle Webcam</button> -->
 
-  <div *ngIf="cameraToggle">
-    <h2>Camera view</h2>
-    <webcam
-      [height]="800"
-      [width]="400"
-      [trigger]="triggerObservable"
-      (imageCapture)="handleImage($event)"
-      *ngIf="toggleWebcam"
-      [videoOptions]="videoOptions"
-      [allowCameraSwitch]="false"
-      [imageQuality]="1"
-      (initError)="handleInitError($event)"
-    ></webcam>
-    <br>
-    <button (click)="triggerSnapshot()">Take a Snapshot</button>
-    <!-- <button (click)="toggleWebcam()">Toggle Webcam</button> -->
-  </div>
+<div *ngIf="cameraToggle">
+  <h3>Camera view</h3>
+  <webcam
+    [trigger]="triggerObservable"
+    (imageCapture)="handleImage($event)"
+    *ngIf="toggleWebcam"
+    [videoOptions]="videoOptions"
+    [allowCameraSwitch]="true"
+    [imageQuality]="1"
+    (initError)="handleInitError($event)"
+  ></webcam>
+  <br>
+  <button (click)="triggerSnapshot()">Take a Snapshot</button>
+</div>
 
-  <hr>
+<hr>
 
-  <div *ngIf="webcamImage">
-    <h2>Snapshot view</h2>
-    <img [src]="webcamImage.imageAsDataUrl">
-    <input
-      type="text"
-      [(ngModel)]="patientId"
-      placeholder="Enter PatientId, eg: AA0000"
-    >
-    <button
-      [disabled]="!patientId"
-      (click)="postImage()"
-    >Send image</button>
-    <button (click)="tryAgain()">Again?</button>
-  </div>
-
+<div *ngIf="webcamImage">
+  <h3>Snapshot view</h3>
+  <img [src]="webcamImage.imageAsDataUrl">
+  <input
+    type="text"
+    [(ngModel)]="patientId"
+    placeholder="Enter PatientId, eg: AA0000"
+  >
+  <button
+    [disabled]="!patientId"
+    (click)="postImage2()"
+  >Send image</button>
+  <button (click)="downloadImage()">Download Image</button>
+  <button (click)="tryAgain()">Again?</button>
 </div>
 
 <!-- Messages -->
@@ -47,3 +43,7 @@
 
 <h4 *ngIf="postSuccess">Post Success!</h4>
 <h4 *ngIf="postError">Post error!</h4>
+
+<!-- <h4>Stream settings</h4>
+<button (click)="getMyStreamSettings()">Get / refresh streamSettings</button>
+<h4>{{ streamSettings | json }}</h4> -->
