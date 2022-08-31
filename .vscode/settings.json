@@ -1,8 +1,0 @@
-{
-    "editor.detectIndentation": false,
-    "editor.tabSize": 2,
-    "html.format.wrapAttributes": "force-expand-multiline",
-    "[html]": {
-        "editor.wordWrap": "off"
-    }
-}
