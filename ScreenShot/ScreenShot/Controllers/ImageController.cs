@@ -29,6 +29,7 @@ namespace ScreenShot.Controllers
     [HttpPost]
     public IActionResult Create([FromForm] PrescriptionImageDto presImg)
     {
+      // Converting IFormFile to byte[] 
       IFormFile file = presImg.ImageFile;
 
       long length = file.Length;
@@ -39,11 +40,12 @@ namespace ScreenShot.Controllers
       byte[] bytes = new byte[length];
       fileStream.Read(bytes, 0, (int)file.Length);
 
-
+      // PrescriptionImageDto to PrescriptionImage
       var prescriptionData = new PrescriptionImage();
       prescriptionData.DoctorName = presImg.DoctorName;
       prescriptionData.ImageFile = bytes;
 
+      // inserting PrescriptionImage into database
       using (var db = new PrescriptionContext())
       {
         db.prescriptionImages.Add(prescriptionData);

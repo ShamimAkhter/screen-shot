@@ -11,24 +11,21 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./camera.component.scss']
 })
 export class CameraComponent implements OnInit {
-  patientId: string = null;
+  // patientId: string = null;
+  doctorName: string = "Dr. ABCD";
   imageBlobFile: Blob;
+
+  windowWidth;
+  windowHeight;
 
   cameraToggle = true;
   // allowCameraSwitch = true;
   multipleWebcamsAvailable = false;
 
   videoOptions: MediaTrackConstraints = {
-    // width: { ideal: 1024 },
-    // height: { ideal: 576 }
 
-    // width: { ideal: 320 },
-    // height: { ideal: 480 } 
-    // width: { ideal: 640 }, // reverse for mobile
-    // height: { ideal: 480 } 
-
-    width: { ideal: 1280 }, // reverse for mobile
-    height: { ideal: 960 }
+    width: { ideal: 3264 }, // reverse for mobile
+    height: { ideal: 2448 } // 8 Megapixels
 
     // For mobile only, will give error in PC, comment out in PC
     // facingMode: { exact: "environment" } // comment out for PC's webcam
@@ -52,6 +49,9 @@ export class CameraComponent implements OnInit {
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       });
+
+    this.windowWidth = document.documentElement.clientWidth;
+    this.windowHeight = document.documentElement.clientHeight;
   }
 
   triggerSnapshot() {
@@ -80,36 +80,19 @@ export class CameraComponent implements OnInit {
     return this.trigger.asObservable();
   }
 
-  // postImage() {
-  //   this.postSuccess = this.postError = false;
-
-  //   let presImg = new FormData();
-  //   presImg.append('PatientId', this.patientId);
-  //   presImg.append('ImageFile', this.webcamImage.imageAsBase64);
-
-  //   this.http.post("https://localhost:44320/api/image", presImg)
-  //     .subscribe({
-  //       next: () => {
-  //         this.postSuccess = true;
-  //       },
-  //       error: () => {
-  //         this.postError = true;
-  //       }
-  //     });
-
-  //   this.patientId = null;
-  // }
-
-  postImage2() {
+  postImage() {
     this.postSuccess = this.postError = false;
 
     this.base64DataToBlobFile();
 
     let prescriptionData = new FormData();
-    prescriptionData.append('DoctorName', 'DoctorName');
+    prescriptionData.append('DoctorName', this.doctorName);
     prescriptionData.append('ImageFile', this.imageBlobFile);
 
-    this.http.post("https://localhost:44320/api/image", prescriptionData)
+    // let url = "https://localhost:44320/";
+    let url = "https://192.168.1.38:5001/";
+
+    this.http.post(url + "api/image", prescriptionData)
       .subscribe({
         next: () => {
           this.postSuccess = true;
@@ -119,7 +102,7 @@ export class CameraComponent implements OnInit {
         }
       });
 
-    this.patientId = null;
+    // this.doctorName = null;
   }
 
   tryAgain() {
@@ -138,31 +121,11 @@ export class CameraComponent implements OnInit {
     }
     this.imageBlobFile = new Blob([int8Array], { type: 'image/png' });
     // console.log(blob);
-
-
   }
 
   downloadImage() {
+    this.base64DataToBlobFile();
+
     saveAs(this.imageBlobFile, "img.jpeg");
   }
-
-  // streamSettings;
-
-  // async getMyStreamSettings() {
-
-  //   let stream = await navigator.mediaDevices.getUserMedia(this.constraint);
-  //   this.streamSettings = stream.getVideoTracks()[0].getSettings().deviceId;
-  //   // stream.getVideoTracks().forEach((cam) => {
-  //   //   // this.streamSettings = cam.getSettings();
-  //   //   this.streamSettings.push(cam.getSettings());
-  //   // })
-
-
-  //   // this.streamSettings = stream.getVideoTracks()[0].getSettings();
-  //   // console.log(streamSettings);
-  //   // let streamCapabilities = stream.getVideoTracks()[0].getCapabilities();
-  //   // console.log(streamCapabilities);
-  //   // let streamConstraints = stream.getVideoTracks()[0].getConstraints();
-  //   // console.log(streamConstraints);
-  // }
 }

@@ -1,9 +1,20 @@
-<h2>Camera snapshot demo</h2>
+<h3>Camera Snapshot Demo</h3>
 <!-- <button (click)="toggleWebcam()">Toggle Webcam</button> -->
 
+<!-- Camera View -->
+
+<div>
+  <input
+    type="text"
+    [(ngModel)]="doctorName"
+  >
+</div>
+
 <div *ngIf="cameraToggle">
-  <h3>Camera view</h3>
+  <h4>Camera view</h4>
+  <!-- <h4>Camera view {{ windowWidth }} : {{ windowHeight }}</h4> -->
   <webcam
+    [height]="525"
     [trigger]="triggerObservable"
     (imageCapture)="handleImage($event)"
     *ngIf="toggleWebcam"
@@ -16,23 +27,21 @@
   <button (click)="triggerSnapshot()">Take a Snapshot</button>
 </div>
 
-<hr>
 
+<!-- Screenshot view -->
 <div *ngIf="webcamImage">
-  <h3>Snapshot view</h3>
+  <h4>Snapshot view</h4>
   <img [src]="webcamImage.imageAsDataUrl">
-  <input
-    type="text"
-    [(ngModel)]="patientId"
-    placeholder="Enter PatientId, eg: AA0000"
-  >
-  <button
-    [disabled]="!patientId"
-    (click)="postImage2()"
+  <div class="container-1">
+    <button
+    (click)="postImage()"
   >Send image</button>
   <button (click)="downloadImage()">Download Image</button>
   <button (click)="tryAgain()">Again?</button>
+  </div>
 </div>
+
+<hr>
 
 <!-- Messages -->
 
@@ -43,7 +52,3 @@
 
 <h4 *ngIf="postSuccess">Post Success!</h4>
 <h4 *ngIf="postError">Post error!</h4>
-
-<!-- <h4>Stream settings</h4>
-<button (click)="getMyStreamSettings()">Get / refresh streamSettings</button>
-<h4>{{ streamSettings | json }}</h4> -->

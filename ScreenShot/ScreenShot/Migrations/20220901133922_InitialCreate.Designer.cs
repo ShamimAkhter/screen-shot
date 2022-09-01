@@ -10,7 +10,7 @@ using ScreenShot.Data;
 namespace ScreenShot.Migrations
 {
     [DbContext(typeof(PrescriptionContext))]
-    [Migration("20220831062603_InitialCreate")]
+    [Migration("20220901133922_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
