@@ -7,10 +7,13 @@ import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-camera',
   templateUrl: './camera.component.html',
-  // templateUrl: './camera2.component.html',
   styleUrls: ['./camera.component.scss']
 })
 export class CameraComponent implements OnInit {
+
+  url = "https://localhost:44320/"; // When using IIS 
+  // url = "https://192.168.1.38:5001/";  // When using dotnet run
+
   // patientId: string = null;
   doctorName: string = "Dr. ABCD";
   imageBlobFile: Blob;
@@ -24,8 +27,11 @@ export class CameraComponent implements OnInit {
 
   videoOptions: MediaTrackConstraints = {
 
-    width: { ideal: 3264 }, // reverse for mobile
-    height: { ideal: 2448 } // 8 Megapixels
+    // width: { ideal: 3264 }, // reverse for mobile
+    // height: { ideal: 2448 } // 8 Megapixels
+
+    width: { ideal: 1156 }, // reverse for mobile
+    height: { ideal: 864 }  // 1 Megapixels
 
     // For mobile only, will give error in PC, comment out in PC
     // facingMode: { exact: "environment" } // comment out for PC's webcam
@@ -89,10 +95,7 @@ export class CameraComponent implements OnInit {
     prescriptionData.append('DoctorName', this.doctorName);
     prescriptionData.append('ImageFile', this.imageBlobFile);
 
-    // let url = "https://localhost:44320/"; // When using IIS 
-    let url = "https://192.168.1.38:5001/";  // When using dotnet run
-
-    this.http.post(url + "api/image", prescriptionData)
+    this.http.post(this.url + "api/image", prescriptionData)
       .subscribe({
         next: () => {
           this.postSuccess = true;
