@@ -8,7 +8,7 @@ ASP.NET Core Web API:
 
 ## Server settings for testing application in mobile phone in local network
 
-### Angular:
+### Angular
 
 To make angular server visible in local network for phone testing use:
 
@@ -54,6 +54,16 @@ To modify this to default, change:
 `"applicationUrl": "https://0.0.0.0:5001;http://0.0.0.0:5000"`
 to:
 `"applicationUrl": "https://localhost:5001;http://localhost:5000"`
+
+### Firewall and network settings in windows to allow local machine to be visible in local network
+
+Network settings:
+![](/screen-shot/docs/network.png)
+
+Firewall rule:
+![](/screen-shot/docs/firewall.png)
+
+> Disable this firewall rule later.
 
 ## For testing in your local machine (not in phone)
 
