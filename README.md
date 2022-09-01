@@ -58,10 +58,10 @@ to:
 ### Firewall and network settings in windows to allow local machine to be visible in local network
 
 Network settings:
-![](/screen-shot/docs/network.png)
+![Network settings](/screen-shot/docs/network.png)
 
 Firewall rule:
-![](/screen-shot/docs/firewall.png)
+![Firewall rule](/screen-shot/docs/firewall.png)
 
 > Disable this firewall rule later.
 
