@@ -1,27 +1,63 @@
-# ScreenShot
+```
+Angular app: 
+/screen-shot/screen-shot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+ASP.NET Core Web API: 
+/screen-shot/ScreenShot 
+```
 
-## Development server
+## Server settings for testing application in mobile phone in local network
+### Angular:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To make angular server visible in local network for phone testing use:
 
-## Code scaffolding
+```bash
+npm run start-ext
+```
+> This command info is in [package.json](/screen-shot/package.json), line 17.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+After that open browser at `https://<local ip address of your computer/>:4200`.
+Example: `https://192.168.1.38:4200`.
 
-## Build
+From your phone also open phones' browser at `https://<local ip address of your computer/>:4200`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> HTTPS is required to access camera.
 
-## Running unit tests
+### ASP.NET Core Web API 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To make ASP.NET Core Web API visible in local network for phone testing, [launchSettings.json](/ScreenShot/ScreenShot/Properties/launchSettings.json) is modified to host server in `0.0.0.0`.
 
-## Running end-to-end tests
+```json
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    ...
+  },
+  "profiles": {
+    "IIS Express": {
+        ...
+    },
+    "ScreenShot": {
+        ...
+      "applicationUrl": "https://0.0.0.0:5001;http://0.0.0.0:5000",
+        ...
+    }
+  }
+}
+```
+This can be used by using `dotnet run`, from the folder [ScreenShot](/ScreenShot/ScreenShot/).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To modify this to default, change:
+`"applicationUrl": "https://0.0.0.0:5001;http://0.0.0.0:5000"`
+to:
+`"applicationUrl": "https://localhost:5001;http://localhost:5000"`
 
-## Further help
+## For testing in your local machine (not in phone)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Angular
+
+Just use the default `npm start or ng serve` and access at `https://localhost:4200`.
+
+### ASP.NET Core Web API
+
+Use the default IIS profile, i.e., Just press F5 or Ctrl+F5.
