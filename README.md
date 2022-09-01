@@ -56,8 +56,11 @@ to:
 
 ### Angular
 
-Just use the default `npm start or ng serve` and access at `https://localhost:4200`.
+- Change `url` variable in [camera.component.ts](/screen-shot/screen-shot/src/app/camera/camera.component.ts) from `url = "https://192.168.1.38:5001/"` to `url = "https://localhost:44320/"` or according to your ASP.NET web server.
+
+- Just use the default `npm start or ng serve` and access at `https://localhost:4200`.
 
 ### ASP.NET Core Web API
 
-Use the default IIS profile, i.e., Just press F5 or Ctrl+F5.
+- Use the default IIS profile, i.e., Just press F5 or Ctrl+F5.
+

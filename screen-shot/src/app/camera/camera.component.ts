@@ -89,8 +89,8 @@ export class CameraComponent implements OnInit {
     prescriptionData.append('DoctorName', this.doctorName);
     prescriptionData.append('ImageFile', this.imageBlobFile);
 
-    // let url = "https://localhost:44320/";
-    let url = "https://192.168.1.38:5001/";
+    // let url = "https://localhost:44320/"; // When using IIS 
+    let url = "https://192.168.1.38:5001/";  // When using dotnet run
 
     this.http.post(url + "api/image", prescriptionData)
       .subscribe({
